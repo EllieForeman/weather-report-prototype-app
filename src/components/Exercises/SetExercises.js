@@ -15,7 +15,7 @@ export const SetExercises = (exercise) => {
         return Grounding();
     }
     if (exercise == 'gratitude') {
-        return <Gratitude />;
+        return <Gratitude onClick={this.props.buttonClick}/>;
     }
     if (exercise == 'positive') {
         return <PositiveMemory />

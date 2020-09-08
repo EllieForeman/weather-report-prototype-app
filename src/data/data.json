@@ -33,7 +33,8 @@
             "acknowledge": "I’m sorry you are feeling like this",
             "howLong": "How long have you felt like this?",
             "reason": "Is there anything you are aware of that has made you feel like this?",
-            "anotherExercise": "Do you want to do another exercise?"
+            "anotherExercise": "Do you want to do another exercise?",
+            "gratitudeReplayStatement": "[NEEDS CHECKING] In the past, you've said that this makes you grateful"
         }
     },
     {
