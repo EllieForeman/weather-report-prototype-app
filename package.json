@@ -1,6 +1,6 @@
 {
   "name": "indecision-app",
-  "homepage": "http://myweatherreport.org",
+  "homepage": "https://ellieforeman.github.io/weather-report-prototype-app/",
   "version": "1.0.0",
   "main": "index.js",
   "author": "rachel",
@@ -10,6 +10,8 @@
   },
   "scripts": {
     "serve": "live-server public/",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
@@ -36,6 +38,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^6.0.0",
     "firebase": "^7.15.1",
+    "gh-pages": "^3.1.0",
     "history": "4.7.2",
     "mini-css-extract-plugin": "^0.11.2",
     "moment": "2.18.1",
