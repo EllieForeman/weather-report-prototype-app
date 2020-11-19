@@ -50,7 +50,7 @@ class Nothing extends React.Component {
         // setting exercise
         GetUnavailableExercises(routeExercises).then(DoUnavailableExercises).then(function(result) {
             availableExercises = result
-            console.log('route, availableExercises', availableExercises)
+            
             firstExercise = ChooseExercise(availableExercises)
         })
         setTimeout(() => { this.setState({ exercise: firstExercise }) }, 2000)
@@ -105,7 +105,6 @@ class Nothing extends React.Component {
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
         let exerciseArray = chooseAnotherRandomExercise(availableExercises, this.state.exercise);
-        console.log('nothingchooseAnotherExercise, exerciseArray', exerciseArray)
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true, exerciseArray: exerciseArray });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });

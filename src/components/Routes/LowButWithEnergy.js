@@ -62,7 +62,6 @@ class LowButWithEnergyRoute extends React.Component {
         // setting exercise
         GetUnavailableExercises(routeExercises).then(DoUnavailableExercises).then(function(result) {
             availableExercises = result
-            console.log('route, availableExercises', availableExercises)
             firstExercise = ChooseExercise(availableExercises)
         })
         setTimeout(() => { this.setState({ exercise: firstExercise }) }, 2000)
@@ -134,7 +133,6 @@ class LowButWithEnergyRoute extends React.Component {
     }
     // called on onexit after a random exercise and asks user if they want another
     askAnotherExerciseQuestion() {
-        console.log('route available exerciseArray length', this.state.exerciseArray.length)
         if (this.state.exerciseArray.length == 1) {
             this.setState({ showFeedbackStatement: true, showAnotherExerciseQuestion: false })
         } else {
@@ -147,7 +145,6 @@ class LowButWithEnergyRoute extends React.Component {
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
         let exerciseArray = chooseAnotherRandomExercise(availableExercises, this.state.exercise);
-        console.log('nothingchooseAnotherExercise, exerciseArray', exerciseArray)
         this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true, exerciseArray: exerciseArray });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });

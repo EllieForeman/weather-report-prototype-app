@@ -219,7 +219,6 @@ export function GetKeyByValue(object, value) {
 }
 
 export function GetUnavailableExercises(array) {
-    console.log('array', array)
     const user = firebase.auth().currentUser;
     const uid = user.uid;
     return database.ref(`users/${uid}/`).once('value').then(function(snapshot) {
@@ -256,8 +255,6 @@ export function DoUnavailableExercises(values) {
             default:
         }
     })
-    console.log('unavailable', unavailable)
     let newArray = initialArray.filter(val => !unavailable.includes(val))
-    console.log('newArray', newArray);
     return newArray
 }

@@ -77,7 +77,7 @@ class HomePage extends React.Component {
                 <AnchorsModal />
                 <PebblesModal />
                 {(this.state.Fish) ? 
-                <div className='anim-2'><Animation animation='fishSwimming'/></div>
+                <div className='anim-0'><Animation animation='fishSwimming'/></div>
                 : ''}                
                 <FishModal fishAppears={this.state.showButton} />
             </div>
