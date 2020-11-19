@@ -42,22 +42,29 @@
     font-weight: 600;
 }
 
+.active-symbol-button-border-detailed {
+    border: 1px solid #3a3d7d;
+    background: #3a3d7d;
+    color: white;
+    padding: 8px 10px 8px 10px;
+    border-radius: 0.4rem;
+    margin:  8px;
+    font-weight: 600;
+}
+
+.symbol-button-border-detailed {
+    border: 1px solid #3a3d7d;
+    background: none;
+    color: #3a3d7d;
+    padding: 8px 10px 8px 10px;
+    border-radius: 0.4rem;
+    margin: 8px;
+    font-weight: 600;
+}
+
 // target iphone SE with small height
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
 and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation:portrait)
-{
-    .active-symbol-button-border {
-        padding: 6px 10px 6px 10px;
-        margin: 4px 10px 4px 10px;
-    }
-    
-    .symbol-button-border {
-        padding: 6px 10px 6px 10px;
-        margin: 4px 10px 4px 10px;
-    }
-}
-
-@media(min-height:200px) and (max-height:550px)
 {
     .active-symbol-button-border {
         padding: 6px 10px 6px 10px;

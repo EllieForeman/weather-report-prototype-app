@@ -143,7 +143,7 @@ export default class SymbolDetailedDescription extends React.Component {
                                     {data[10].secondaryWords.map((word) => (
                                         <div className='words' key={word}>
                                             <button
-                                                className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
+                                                className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border-detailed' : 'symbol-button-border-detailed'}
                                                 onClick={(e) => { this.addWords({ word }) }}>
                                                 {word.toUpperCase()}
                                             </button>
