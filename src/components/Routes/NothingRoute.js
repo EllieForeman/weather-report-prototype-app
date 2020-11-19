@@ -89,7 +89,6 @@ class Nothing extends React.Component {
 
     // called on onexit after a random exercise and asks user if they want another
     askAnotherExerciseQuestion() { 
-        console.log('route aviable exerciseArray length', this.state.exerciseArray.length)
         if (this.state.exerciseArray.length == 1) {
             this.setState({ showFeedbackStatement: true, showrandQuesOrExercise: false })
         } else {
@@ -124,7 +123,6 @@ class Nothing extends React.Component {
     }
 
     render() {
-        console.log('route, this.state.exercise', this.state.exercise )
         const showQuestionorExercise = this.state.showrandQuesOrExercise ? <div> {this.SetExercises(this.state.exercise)}</div> : ''
         return (
             <div>
