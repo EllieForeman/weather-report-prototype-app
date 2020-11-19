@@ -150,7 +150,7 @@ export default class SymbolDetailedDescription extends React.Component {
                                         </div>
                                     ))}
                                 </div>
-                                <div className="button-container">
+                                <div className="button-container-squash">
                                     <BackButton />
                                     {(this.state.newUser) ? <button className='next-button-dark' onClick={this.showLastPartOnboarding.bind(this)}>NEXT</button> : <button className='next-button-dark' onClick={this.sendData.bind(this)}>NEXT</button>}
                                 </div>

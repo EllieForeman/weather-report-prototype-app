@@ -211,6 +211,12 @@ button:focus {
     margin-top: 20px;
 }
 
+.button-container-squash {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
 .stack-button {
     display: block;
     margin: 10px auto;
