@@ -18,7 +18,7 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        const rand = Math.random() * (30000 - 15000) + 15000
+        const rand = Math.random() * (30000 - 15000) + 15000 // random between 15 and 30 seconds for fish appearing
         let intervalId = setInterval(() => {
             this.setState(prevState => {
                 if (prevState.Fish === true) {

@@ -11,7 +11,6 @@ import rainbow from '../../images/weather-symbols/rainbow.svg';
 import lightclouds from '../../images/weather-symbols/light-clouds.svg';
 import tornado from '../../images/weather-symbols/tornado.svg';
 import tsunami from '../../images/weather-symbols/tsunami.svg';
-import { CSSTransition } from "react-transition-group";
 
 export class ChooseSymbolPage extends React.Component {
     render() {

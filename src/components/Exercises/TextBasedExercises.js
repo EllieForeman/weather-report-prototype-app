@@ -3,7 +3,6 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 const firebase = require('firebase/app');
 import MeditationAnimation from '../Animations/MeditationAnimation';
-import { BackButton } from '../../actions/route-functions';
 const data = require('../../data/data.json');
 
 
@@ -177,8 +176,3 @@ export class SafePlace extends React.Component {
         )
     }
 }
-    
-
-    export const LessStimulation = () => {
-        return <h1 className='info-box-title'>insert less stimulation exercise here</h1>
-    }

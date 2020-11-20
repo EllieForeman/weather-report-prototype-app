@@ -11,7 +11,7 @@ export const Header = () => (
                 <div className="leftright"></div>
                 <div className="rightleft"></div>
             </Link>
-            < FirstAid />
+            <FirstAid />
             <Menu />
         </div>
         </div>

@@ -135,7 +135,7 @@ export function expressedSuicidalRecently(cb) {
         })
 }
 
-// functions which checks if a user has inputed a red word as mainWord x times in the last week
+// functions which checks if a user has inputed a red word (manic, invincible, over stimulated) as mainWord x times in the last week
 export function expressedTooHighRecently(cb) {
     const uid = firebase.auth().currentUser.uid;
     let counter = 0;
@@ -203,21 +203,11 @@ export function BackButton({ children }) {
     )
 }
 
-// back button
-export function BackButtonFirstAid({ children }) {
-    let history = useHistory()
-    return (
-        <button className='first-aid-close' type="button" onClick={() => history.goBack()}>
-            CLOSE
-      </button>
-    )
-}
-
-
 export function GetKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key].includes(value));
 }
 
+// returns exercises that users have input for
 export function GetUnavailableExercises(array) {
     const user = firebase.auth().currentUser;
     const uid = user.uid;
@@ -227,6 +217,7 @@ export function GetUnavailableExercises(array) {
     
 }
 
+// remove any exercise which user currently has no input for
 export function DoUnavailableExercises(values) {
     var snapshot = values[0];
     var initialArray = values[1];

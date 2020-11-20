@@ -2,9 +2,7 @@ import React from 'react';
 const firebase = require('firebase/app');
 import database from '../../firebase/firebase';
 import moment from 'moment';
-import { history } from '../../routers/AppRouter';
 import { CSSTransition } from "react-transition-group";
-import { ReactReduxContext } from 'react-redux';
 let goTo = '';
 
 export class IntroPage extends React.Component {
@@ -23,9 +21,10 @@ export class IntroPage extends React.Component {
 
     choosePath() {
         const date = moment().format("YYYY-MM-DD");
-        const uid = firebase.auth().currentUser.uid; // check if they have entered WR more 
+        const uid = firebase.auth().currentUser.uid; 
         let entries = database.ref(`users/${uid}/weatherReports/${date}`);
         // THIS BIT was .on instead of .once -> it was being called again when the snapshot updated!
+        // check if they have entered a report more than 3 times in a day
         entries.once('value', function (snapshot) {
             const numberOfEntries = snapshot.numChildren()
             if (numberOfEntries >= 3) {
