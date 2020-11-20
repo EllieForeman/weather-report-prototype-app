@@ -1,7 +1,7 @@
 import React from 'react';
 import { Acknowledgement, AnimationsLayered, HowLongHaveYouFeltLikeThis, ReasonForFeelings, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement } from '../SharedComponents/SharedComponents';
 import { PositiveThingQuestion, HelpedCopeQuestion } from '../SharedComponents/MentalHealthQuestions'
-import { isLongerThanThreeDays, randomQuestionNumber, chooseAnotherRandomExercise } from '../../actions/route-functions';
+import { isLongerThanThreeDays, randomQuestionNumber, chooseAnotherRandomExercise, DoUnavailableExercises, GetUnavailableExercises } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 
@@ -12,6 +12,10 @@ import { Breathing, Meditating, Grounding } from '../Exercises/TextBasedExercise
 import Gratitude from '../Exercises/ReplayGratitude';
 import PositiveMemory from '../Exercises/ReplayPosMemories';
 import LikeAboutSelf from '../Exercises/ReplayLikeAboutSelf';
+
+const routeExercises = ['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike'];
+let firstExercise = 'meditating';
+let availableExercises;
 
 class LowRoute extends React.Component {
 
@@ -27,6 +31,8 @@ class LowRoute extends React.Component {
             randQues: 0,
             showRandomExercises: null,
             exercise: 'meditating',
+            availableExercises: [],
+            exerciseArray: routeExercises,
             neutralAnimation: true,
             lowFadeIn: false,
             whiteBackground: false,
@@ -50,8 +56,12 @@ class LowRoute extends React.Component {
         // random function for random questions
         this.setState({ randQues: randomQuestionNumber(2) });
         // setting exercise
-        let exercise = ChooseExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike']);
-        this.setState({ exercise: exercise });
+        GetUnavailableExercises(routeExercises).then(DoUnavailableExercises).then(function(result) {
+            availableExercises = result
+            
+            firstExercise = ChooseExercise(availableExercises)
+        })
+        setTimeout(() => { this.setState({ exercise: firstExercise }) }, 2000)
 
         setTimeout(() => { this.setState({ neutralAnimation: false, lowFadeIn: true }) }, 500)
         setTimeout(() => {
@@ -103,15 +113,20 @@ class LowRoute extends React.Component {
     }
     // called on onexit after a random exercise and asks user if they want another
     askAnotherExerciseQuestion() {
-        this.setState({ showAnotherExerciseQuestion: true,  showRandomExercises: false})
+        if (this.state.exerciseArray.length == 1) {
+            this.setState({ showFeedbackStatement: true, showRandomExercises: false })
+        } else {
+            this.setState({ showAnotherExerciseQuestion: true, showRandomExercises: false })
+        }
     }
+
     // called when user presses 'yes' or 'no' to another question
     answeredAnotherExerciseQuestion(another) { another ? (this.chooseAnotherExercise()) : this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: false }) }
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'selflike' ], this.state.exercise);
-        this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
+        let exerciseArray = chooseAnotherRandomExercise(availableExercises, this.state.exercise);
+        this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true, exerciseArray: exerciseArray });
         let exercise = ChooseExercise(exerciseArray);
         this.setState({ exercise: exercise });
     }

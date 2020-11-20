@@ -20,7 +20,7 @@ class HighRoute extends React.Component {
             showRandQues: null,
             takePhoto: null,
             showFeedbackStatement: null,
-            neutralAnimation: true, 
+            neutralAnimation: true,
             highFadeIn: false,
             whiteBackground: false,
             animationSpeed: 1,
@@ -40,7 +40,7 @@ class HighRoute extends React.Component {
         }
         this.setState({ randQues: randomQuestionNumber(2) });
 
-        setTimeout(() => { this.setState({ neutralAnimation: false, okFadeIn: true }) }, 500)
+        setTimeout(() => { this.setState({ neutralAnimation: false }) }, 500)
         setTimeout(() => {
             setInterval(() => {
                 if (this.state.animationSpeed <= 1 && this.state.animationSpeed >= 0.1)

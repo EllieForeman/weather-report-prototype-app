@@ -57,7 +57,7 @@ export class ReasonForFeelingsInput extends React.Component {
             <div>
                 <h1 className='info-box-title'>{data[3].shared.reason}</h1>
                 <form className='button-container-vertical' onSubmit={this.handleNoteSubmit}>
-                    <textarea className='free-form-input input-paragraph' type="text" value={this.state.value} onChange={this.handleNoteChange} />
+                    <textarea className='free-form-input input-paragraph' placeholder="What was it that made you feel like this?" type="text" value={this.state.value} onChange={this.handleNoteChange} />
                     <button className='next-button-dark free-form-submit center' onClick={this.props.buttonClick}>NEXT</button>
                 </form>
             </div>
@@ -266,7 +266,7 @@ export class ReactFirebaseFileUpload extends React.Component {
         const user = firebase.auth().currentUser;
         const uid = user.uid;
         let date = moment().format("DD-MM-YYYY");
-        const uploadTask = storage.ref(`images/${this.state.image.name}`).put(this.state.image);
+        const uploadTask = storage.ref(`images/${uid}/${this.state.image.name}`).put(this.state.image);
         uploadTask.on(
             "state_changed",
             snapshot => {
@@ -280,7 +280,7 @@ export class ReactFirebaseFileUpload extends React.Component {
             },
             () => {
                 storage
-                .ref("images")
+                .ref(`images/${uid}`)
                 .child(this.state.image.name)
                 .getDownloadURL()
                 .then(url => {
@@ -564,7 +564,7 @@ export class TextWithNextOnboarding extends React.Component {
     render() {
         return (
             <div>
-                <h1>{this.props.text}</h1>
+                <h1 className='info-box-title'>{this.props.text}</h1>
                 <div className='button-container'>
                     <button className='next-button-dark' onClick={(e) => this.props.onClick(true)}>NEXT</button>
                 </div>

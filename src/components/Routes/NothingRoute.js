@@ -2,7 +2,7 @@
 import React from 'react';
 import { AnimationsLayered, ReasonForFeelings, ReasonForFeelingsInput, AnotherExerciseQuestion, FeedbackStatement } from '../SharedComponents/SharedComponents';
 import { PositiveThingQuestion, PositiveChangeQuestion } from '../SharedComponents/MentalHealthQuestions';
-import { chooseAnotherRandomExercise, checkExercises, DoUnavailableExercises, GetUnavailableExercises } from '../../actions/route-functions';
+import { chooseAnotherRandomExercise, DoUnavailableExercises, GetUnavailableExercises } from '../../actions/route-functions';
 import { CSSTransition } from "react-transition-group";
 import { ChooseExercise } from '../Exercises/ChooseExercise';
 
@@ -10,6 +10,10 @@ import { ChooseExercise } from '../Exercises/ChooseExercise';
 import { Breathing, Meditating, Grounding } from '../Exercises/TextBasedExercises';
 import Gratitude from '../Exercises/ReplayGratitude';
 import PositiveMemory from '../Exercises/ReplayPosMemories';
+
+const routeExercises = ['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posThing', 'posChange'];
+let firstExercise = 'breathing';
+let availableExercises;
 
 class Nothing extends React.Component {
 
@@ -20,6 +24,8 @@ class Nothing extends React.Component {
             showReasonForFeeling: false,
             knowReasonForFeeling: null,
             exercise: '',
+            availableExercises: [],
+            exerciseArray: routeExercises,
             showrandQuesOrExercise: null,
             showAnotherExerciseQuestion: null,
             neutralAnimation: true,
@@ -42,12 +48,12 @@ class Nothing extends React.Component {
         }
 
         // setting exercise
-        let firstExercise = 'breathing';
-        GetUnavailableExercises(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing']).then(DoUnavailableExercises).then(function(result) {
-            let availableExercises = result
+        GetUnavailableExercises(routeExercises).then(DoUnavailableExercises).then(function(result) {
+            availableExercises = result
+            
             firstExercise = ChooseExercise(availableExercises)
         })
-        setTimeout(() => { this.setState({ exercise: firstExercise }) }, 1000)
+        setTimeout(() => { this.setState({ exercise: firstExercise }) }, 2000)
 
         setTimeout(() => { this.setState({ neutralAnimation: false, nothingFadeIn: true }) }, 500)
         setTimeout(() => {
@@ -82,7 +88,13 @@ class Nothing extends React.Component {
     seenExercise() { this.setState({ showrandQuesOrExercise: false, showAnotherExerciseQuestion: true }) }
 
     // called on onexit after a random exercise and asks user if they want another
-    askAnotherExerciseQuestion() { this.setState({ showAnotherExerciseQuestion: true, showrandQuesOrExercise: false }) }
+    askAnotherExerciseQuestion() { 
+        if (this.state.exerciseArray.length == 1) {
+            this.setState({ showFeedbackStatement: true, showrandQuesOrExercise: false })
+        } else {
+            this.setState({ showAnotherExerciseQuestion: true, showrandQuesOrExercise: false })
+        }
+    }
 
     // called when user presses 'yes' or 'no' to another question
     answeredAnotherExerciseQuestion(another) {
@@ -91,10 +103,9 @@ class Nothing extends React.Component {
 
     // returns a random exercise that isn't the same as the one just seen
     chooseAnotherExercise() {
-        let exerciseArray = chooseAnotherRandomExercise(['breathing', 'meditating', 'grounding', 'gratitude', 'positive', 'posChange', 'posThing'], this.state.exercise);
-        this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true });
+        let exerciseArray = chooseAnotherRandomExercise(availableExercises, this.state.exercise);
+        this.setState({ showAnotherExerciseQuestion: false, yesAnotherExercise: true, exerciseArray: exerciseArray });
         let exercise = ChooseExercise(exerciseArray);
-        //let exercise = 'meditating';
         this.setState({ exercise: exercise });
     }
 
@@ -109,7 +120,6 @@ class Nothing extends React.Component {
         if (exercise == 'positive') { return <PositiveMemory buttonClick={this.askAnotherExerciseQuestion.bind(this)} /> }
         if (exercise === 'posThing') { return <PositiveThingQuestion buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
         if (exercise === 'posChange') { return <PositiveChangeQuestion buttonClick={this.askAnotherExerciseQuestion.bind(this)}/> }
-
     }
 
     render() {

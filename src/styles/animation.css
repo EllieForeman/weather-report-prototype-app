@@ -46,7 +46,7 @@
 }
 
 .transform-up-exit-active {
-    transform: translateY(-303%);
+    transform: translateY(-135px);
     transition: transform 1s ease-in-out;
 }
 

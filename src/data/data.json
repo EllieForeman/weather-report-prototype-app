@@ -1,7 +1,7 @@
 [    
     {
         "regularLogin": {
-            "1": "Think about how you are feeling right now",
+            "1": "Think About How You Are Feeling Right Now",
             "2": "If you were to describe that feeling in a weather symbol, which symbol would it be?",
             "3": "Choose a word that best describes that feeling?",
             "4": "Do you want to share any other emotions that you are feeling?"    
@@ -34,27 +34,27 @@
             "positiveChange": "How can you positively change your situation?",
             "anotherExercise": "Do you want to do another exercise?",
             "gratefulQuestion": "What are 3 things are you grateful for?",
-            "takeCareQuestion": "What 3 things do you do to take care of yourself and keep well?  It could be things like taking a shower, doing the washing or going for a walk.",
+            "takeCareQuestion": "What 3 things do you do to take care of yourself and keep well?  It could be things like taking a shower, doing the washing or going for a walk",
             "enjoyQuestion": "What 3 things do you enjoy?",
-            "likeAboutYourselfQuestion": "Sometimes we can forget nice things we like about ourselves. Heres some things you’ve liked about yourself in the past",
-            "gratitudeReplayStatement": "Sometimes we forget the bigger picture. Here are some things that you said you were grateful for.",
-            "likeReplayStatement": "Sometimes we can forget nice things we like about ourselves. Here are some things you’ve liked about yourself in the past.",
+            "likeAboutYourselfQuestion": "Sometimes we can forget nice things we like about ourselves. Here are some things you’ve liked about yourself in the past",
+            "gratitudeReplayStatement": "Sometimes we forget the bigger picture. Here are some things that you said you were grateful for",
+            "likeReplayStatement": "Sometimes we can forget nice things we like about ourselves. Here are some things you’ve liked about yourself in the past",
             "posReplayStatement": "Sometimes we forget we’ve had some great times in our lives, Here are some positive memories from your life",
             "safeQuestion": "Are you keeping yourself safe?",
             "support": "Have you contacted your supporters?",
-            "contentReplayStatement": "Sometimes we can forget times where we have felt content and OK. Here are some memories of sometimes from your life that you’ve felt OK to remind you that you can feel this again",
+            "contentReplayStatement": "Sometimes we can forget times where we have felt content and OK. Here are some memories of some times from your life that you’ve felt OK to remind you that you can feel this again",
             "reminderQuestion": "Would you like to be reminded of this time in the future?",
             "photoAsk": "Do you want to take a photo?",
-            "replayCare": "Sometimes we forget how to take care of yourself. Here are some previous things that you’ve mentioned that you could do to help yourself.",
+            "replayCare": "Sometimes we forget how to take care of yourself. Here are some previous things that you’ve mentioned that you could do to help yourself",
             "acknowledge": {
                 "low": "I’m sorry you are feeling like this",
                 "mediumLow": "I’m sorry you are feeling like this",
                 "veryLow": "I’m sorry you are feeling like this, it can be difficult to have these feelings",
                 "lowWithEnergy": "I’m sorry you are feeling like this, it can be difficult to have these feelings",
-                "suicidal": "I’m sorry you’re feeling like this, it can be difficult to have and sit with these feelings."
+                "suicidal": "I’m sorry you’re feeling like this, it can be difficult to have and sit with these feelings"
             },
             "feedbackStatements": {
-                "ok": ["Thanks for that", "\"May the strength of the past reflect in your future.\""],
+                "ok": ["Thanks for that", "\"May the strength of the past reflect in your future\""],
                 "high": ["Thanks for that"],
                 "tooHigh": ["Hopefully that helped and your weather calms down soon"],
                 "nothing": ["Sometimes we just have to sit with these difficult feelings, and know that they will pass, just like the weather", "You are not your feelings, tomorrow will come. Just because I’m feeling nothing, doesn’t mean I am nothing"],
@@ -62,7 +62,7 @@
                 "mediumLow": ["You are not alone in these feelings, many people feel like this at some point in their lives. You can work through this", "Don’t give up, one day you will look back, and be glad you didn’t"],
                 "low": ["You are more than your feelings, tomorrow will come", "If the human brain were simple enough to understand, we’d be too simple to understand it", "It is OK to be at a place of struggle. Struggle is another word for growth. The only one who doesn’t struggle is the one who doesn’t grow 'It’s OK to not, be OK'","'This too shall pass' Persian saying","You are not just your thoughts"],
                 "lowWithEnergy": ["'Even the darkest night will end, and the sun will rise' Victor Hugo", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"],
-                "suicidal": ["Lots of people have felt like this before. It may seem like things won’t change but all feelings eventually pass.", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"]
+                "suicidal": ["Lots of people have felt like this before. It may seem like things won’t change but all feelings eventually pass", "Don’t give up, one day you will look back, and be glad you didn’t","I won’t say have a good day. Instead I advise you, to have a day. Stay alive, feed yourself well, wear comfortable clothes, and don’t give up on yourself just yet. It’ll get better. Until then, have a day"]
             },
             "exercises": {
                 "groundingText": "Grounding does what it says on the tin – it literally grounds us. It seeks to place us firmly back in the moment, fully in connection with ourselves and the world around us. Focusing on the senses can really ground us – Sound, Smell, Taste, Sight, Touch and Breathing",
@@ -124,7 +124,7 @@
                 "riskOthers": "Are you at risk of harming yourself or others?",
                 "plan": "Have you made a plan?",
                 "act": "Are you planning to act on that plan?",
-                "pass": "These feelings will pass, however it seems you need to get support now.",
+                "pass": "These feelings will pass, however it seems you need to get support now",
                 "samaritans": "Call 999 or the Samaritans on 116 123 for free or",
                 "help": "That's Good. Are you getting the help you need?",
                 "help2": "Are you getting the help you need?",
@@ -139,20 +139,20 @@
     {
         "onboarding": {
             "intro": "Welcome to Weather Report",
-            "bestPerson": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you help yourself.",
-            "care": "It can also sometimes be easier to care for something or someone other than yourself, so whilst the weather you enter is about how you’re feeling, the effect will be shown on the river. The river is a place of support.",
-            "river": "This is the water line, it will change depending on your weather.",
-            "environment": "This is the place where you’ll see the weather change, in relation to your mood.",
-            "plant": "This is the lily that you’ll see grow and float. Whatever your weather the lily is resilient and it will always float.",
-            "roots": "The lily has roots underneath the water. These roots will always be visible as the lily floats along the river. The roots represent your support network.",
+            "bestPerson": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you help yourself",
+            "care": "It can also sometimes be easier to care for something or someone other than yourself, so whilst the weather you enter is about how you’re feeling, the effect will be shown on the river. The river is a place of support",
+            "river": "This is the water line, it will change depending on your weather",
+            "environment": "This is the place where you’ll see the weather change, in relation to your mood",
+            "plant": "This is the lily that you’ll see grow and float. Whatever your weather the lily is resilient and it will always float",
+            "roots": "The lily has roots underneath the water. These roots will always be visible as the lily floats along the river. The roots represent your support network",
             "addRoots": "Let’s add the first person who you can contact for support, maybe a friend or family member, health professional, gp, neighbour, someone you trust?",
             "putLily": "Great now let's put the lily in the river",
             "language1": "The language around expressing how you feel can be difficult, layered and complex, so sometimes a metaphor can help",
             "language2": "We all have some idea of what someone means when they say they feel 'stormy'",
             "language3": "Weather Report uses this metaphor of inner weather to help you express, monitor and reflect on the patterns of your mood",
-            "addWeather1": "You can add weather up to 3 times a day and see the effect of the weather on the river.",
+            "addWeather1": "You can add weather up to 3 times a day and see the effect of the weather on the river",
             "addWeather2": "Let’s try inputting your inner weather for the first time",
-            "report": "You can see how you have been doing over days, weeks and months in this weather report. Over time you may be able to reflect and see connections between what are negative triggers and what are positive things you can do to help your mental health. The more you share how you’re feeling, the more connections you might see."
+            "report": "You can see how you have been doing over days, weeks and months in this weather report. Over time you may be able to reflect and see connections between what are negative triggers and what are positive things you can do to help your mental health. The more you share how you’re feeling, the more connections you might see"
     }
 },
     {
@@ -191,8 +191,8 @@
     },
     {
         "menu": {
-            "wrDescription": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you, help yourself.",
-            "accessibility": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you, help yourself."            
+            "wrDescription": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you, help yourself",
+            "accessibility": "This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you, help yourself"            
         }
     }
 ]

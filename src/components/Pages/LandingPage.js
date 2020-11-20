@@ -16,8 +16,9 @@ export class LandingPage extends React.Component {
         
         return (
             <div className='background-box'>
+                <div className='background-box'></div>
                 <AnimationsLayered speeds={[0.2]} animations={['neutralTreesNoLily']} />
-                <div className='info-box'>
+                <div className='info-box-login'>
                     <CSSTransition in={this.state.showContent} timeout={2000} classNames="fade" appear unmountOnExit>
                         <div>
                             <h1 className='header-text-spacing'>{ data[0].regularLogin[1] }</h1>

@@ -59,7 +59,7 @@ export default class PositiveMemory extends React.Component {
 
     render() {
         const photoMemory = this.state.pebbleToShow && this.state.pebbleToShow.url ?
-        <div className="flex-center">
+        <div className="flex-center-pos-memories">
             <img src={this.state.pebbleToShow.url} alt="photo of your recorded memory" width="90%"/>
         </div>
         : '';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Lottie from 'react-lottie'
-import sun from '../../animations/sun.json'
 import fish from '../../animations/00_Fish_Still.json'
 import environment from '../../animations/10_Neutral_BG_With_Trees.json'
 import lilypad from '../../animations/Lily_Pad.json'
@@ -63,9 +62,6 @@ class Animation extends Component {
                 break;
             case 'roots':
                 this.setState({ animationData: roots })
-                break;
-            case 'sun':
-                this.setState({ animationData: sun })
                 break;
             case 'fish':
                 this.setState({ animationData: fish })

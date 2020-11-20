@@ -117,7 +117,7 @@ export class FishModal extends React.Component {
                             <h3>{data[10].home.addToFish}</h3> :
                             <TextWithButton buttonText='Add another' text={data[10].home.addToFish} onClick={this.toggleAddGratitude.bind(this)} />
                         }
-                        {this.state.toggleAddGratitude ? <OneGratefulQuestion /> : ''}
+                        {this.state.toggleAddGratitude ? [listOfGrateful = [], <OneGratefulQuestion />] : ''}
                     </div>
                 </ReactModal>
             </div>
@@ -363,15 +363,16 @@ export class PebblesModal extends React.Component {
                     <h1>Pebble Memories</h1>
                     {this.state.listOfPebbles.length == 0 ?
                         <h2>Use the app more to save positive memories</h2>
-                    :
-                    <span>
-                        {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.date} - {this.state.pebbleToShow.time}</h3>}
-                        {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3>}
-                        {photoMemory}
-                        <div className="flex-center">
-                            <button className="transparent-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>
-                        </div>
-                    </span>
+                        :
+                        <span>
+                            {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.date} - {this.state.pebbleToShow.time}</h3>}
+                            {this.state.pebbleToShow && <h3>{this.state.pebbleToShow.reason}</h3>}
+                            {photoMemory}
+                            <div className="flex-center">
+                                {/* only show look at another memory button when there are more than 1 pebbles saved */}
+                                {(this.state.listOfPebbles.length > 1) && <button className="transparent-button" onClick={this.selectAnotherMemory.bind(this)}>Look at another memory</button>}
+                            </div>
+                        </span>
                     }
                 </ReactModal>
             </div>

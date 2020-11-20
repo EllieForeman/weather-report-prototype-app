@@ -1,0 +1,130 @@
+.floatLeft {
+    left: 0;
+}
+
+.floatRight {
+	right: 0;
+}
+
+.iconHeader {
+    max-width: 45px;
+    vertical-align: middle;
+}
+
+.titleProject{
+    display: inline-block;
+    line-height: 60px;
+    margin-left: 15px;
+}
+
+.headerHeight {
+    height: 60px;
+    position: relative;
+}
+
+.backgroundProjects {
+    background-color: #9FD6CD;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    padding-top: 20px;
+}
+
+.linkTextProjectPage {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56%;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.WR-info-text {
+    padding: 0 15px 50px 15px;
+}
+
+.flex-container {
+    display: flex; /* or inline-flex */
+    padding-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.imageContainer {
+    width: 15%;
+    margin: 40px
+}
+
+.logoImage {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .video-container iframe {
+        padding-left: 30px;
+        padding-right: 30px
+    }
+    .iconHeader {
+        margin-left: 30px;
+        padding-bottom: 7px;
+    }
+    .linkTextProjectPage {
+        margin-right: 30px;
+    }
+} 
+
+@media (max-width: 768px) {
+    .titleProject {
+        display: none;
+    }
+    .iconHeader {
+        margin-left: 20px;
+    }
+    .linkTextProjectPage {
+        margin-right: 15px;
+    }
+    .imageContainer {
+        width: 60% !important;
+        margin: 23px !important;
+    }
+    .flex-container {
+        display: flex; /* or inline-flex */
+        padding-bottom: 50px;
+        flex-direction: column;
+    }
+    .WR-info-text {
+        padding: 0 15px 20px 15px !important;
+    }
+    .headerHeight {
+        padding-bottom: 30px;
+    }
+    .video-container {
+        padding-bottom: 64%;
+    }
+} 

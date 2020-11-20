@@ -4,7 +4,7 @@
     font-weight: 300;
     border: none;
     width: 100%;
-    background-color: rgba(200, 229, 232, 0.9);
+    background: rgba(200, 229, 232, 0.1);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -28,6 +28,14 @@ input.form-input:focus {
     margin-bottom: 37px;
     border-bottom: 1px solid white;
     background-color: rgba(200, 229, 232, 0.9);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.wrap-reset-password-text {
+    width: 100%;
+    position: relative;
+    margin-bottom: 37px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }

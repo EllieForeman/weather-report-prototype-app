@@ -234,12 +234,9 @@ class SuicidalRoute extends React.Component {
                     <CSSTransition in={this.state.showPlanningQ} timeout={2000} onExited={() => { this.triggerAfterPlanning() }} classNames="fade" unmountOnExit><PlanningQ onClick={this.actionAfterPlanning.bind(this)} /></CSSTransition>
                     <CSSTransition in={this.state.showFeelingsPass} timeout={2000} onEnter={() => { this.triggerTimeout('showFeelingsPass') }} onExited={() => { this.showCrisisTeam() }} classNames="fade" unmountOnExit><FeelingsPassStatement /></CSSTransition>
                     <CSSTransition in={this.state.showSamaritans} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAnchors() }}><Samaritans onClick={this.actionAfterSamaritans.bind(this)} /></CSSTransition>
-
                     <CSSTransition in={this.state.afterCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onEnter={() => { this.triggerTimeout('afterCrisisTeam') }} onExited={() => { this.showSamaritans() }}><h1>{data[8].suicidal.questions.afterCrisis}</h1></CSSTransition>
                     <CSSTransition in={this.state.showCrisisTeam} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.showAfterCrisis() }}><Crisis onClick={this.leaveCrisis.bind(this)} /></CSSTransition>
-
                     <CSSTransition in={this.state.showAnchors} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.show('showGettingHelp2') }}><AnchorsWithoutAddOption onClick={this.leaveAnchors.bind(this)} /></CSSTransition>
-
                     <CSSTransition in={this.state.showGettingHelp1} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelp1() }}><GettingHelp1 onClick={this.leaveGettingHelp1.bind(this)} /></CSSTransition>
 
                     <CSSTransition in={this.state.showGettingHelp2} timeout={2000} classNames="fade" unmountOnExit onExited={() => { this.actionAfterHelp2() }}><GettingHelp2 onClick={this.leaveGettingHelp2.bind(this)} /></CSSTransition>

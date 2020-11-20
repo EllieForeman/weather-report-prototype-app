@@ -8,7 +8,6 @@ import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase';
-import { startSetEntries } from './actions/entries';
 import LoadingPage from './components/Pages/LoadingPage';
 
 const store = configureStore();
@@ -31,12 +30,11 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(login(user.uid));
-        // store.dispatch(startSetEntries()).then(() => {
             renderApp();
             if (history.location.pathname === '/') {
                 history.push('/intro');
             }
-        // });
+
     } else {
         store.dispatch(logout());
         renderApp();

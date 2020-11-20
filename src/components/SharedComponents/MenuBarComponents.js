@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import firstAid from '../../images/first-aid-icon.svg';
-import ReportPhoto from '../../images/weather-symbols-no-border/dark-clouds.png';
 import { CSSTransition } from "react-transition-group";
 const data = require('../../data/data.json');
 const firebase = require('firebase/app');
-import exampleImage from '../../images/graph-example.png';
 import { history } from '../../routers/AppRouter';
+import moment from 'moment';
+import database from '../../firebase/firebase';
+
+import rainbow from '../../images/weather-symbols-no-border/rainbow.png';
+import sunshine from '../../images/weather-symbols-no-border/sunshine.png';
+import bluesky from '../../images/weather-symbols-no-border/bluesky.png';
+import lightClouds from '../../images/weather-symbols-no-border/light-clouds.png';
+import greyCloud from '../../images/weather-symbols-no-border/grey-cloud.png';
+import purpleRain from '../../images/weather-symbols-no-border/cloud-rain-threat.png';
+import turquoiseRain from '../../images/weather-symbols-no-border/dark-clouds.png';
+import tornado from '../../images/weather-symbols-no-border/tornado.png';
+import tsunami from '../../images/weather-symbols-no-border/tsunami.png';
 
 export class Logout extends React.Component {
     startLogout() {
@@ -161,9 +171,15 @@ export class Menu extends React.Component {
                     </div>
 
                     <h1>WHAT IS WEATHER REPORT?</h1>
-                    <p>{data[11].menu.wrDescription}</p>
-                    <h1>ACCESSIBILITY</h1>
-                    <p>{data[11].menu.accessibility}</p>
+                    <p>This is a tool to help you log how you're feeling, notice patterns in your mood and lead yourself through a process of self reflection. You’re the best person to understand how you’re feeling, this is just a process to help you, help yourself.</p>
+                    <p>The language around expressing how you feel can be difficult, layered and complex, so sometimes a metaphor can help. We all have some idea of what someone means when they say they feel “stormy”. Weather Report uses this metaphor of inner weather to help you express how you feel.</p>
+                    <h1>HOW TO USE</h1>
+                    <p>You will be asked to enter your inner weather (how you are feeling) when you open the app. You can do this up to 3 times a day.</p>
+                    <p>On the home page there are also roots which represent your support network, pebbles that represent positive memories and occasionally a fish that keeps a list of things you are grateful for. You can click on the white circles over the image to access these.</p>
+                    <p>The more information you input, the more you’ll get out, with more positive memories, prompts and history to reflect upon.</p>
+                    <h1>FEEDBACK</h1>
+                    <p>This is the first version of this tool and we’d love to hear how you’ve used it and what you think. Get in touch with <a href="mailto:info@studiomeineck.com">Studio Meineck</a> to share your thoughts.</p>
+                    <p>You need to log out and back in - to update your inner weather</p>
                     <Logout />
                 </ReactModal>
             </span>
@@ -176,18 +192,61 @@ export class Report extends React.Component {
         super(props);
         this.state = {
             showReport: false,
+            date: null,
+            weather: null,
+            mainWord: null,
+            secondWord: null,
+            thirdWord: null
         }
+        this.getWeatherData = this.getWeatherData.bind(this);
+    }
+
+    componentDidMount() {
+        const date = moment().format("Do MMMM");
+        this.setState({ date });
+        this.getWeatherData();
     }
 
     handleOpenModalReport() { this.setState({ showReport: true }) }
     handleCloseModalReport() { this.setState({ showReport: false }) }
 
-    showAnalysisImage() {
-        this.setState({ showAnalysis: true });
-    }
+    getWeatherData() {
+        const uid = firebase.auth().currentUser.uid;
+        let weatherSymbol = null;
+        let reportTime = null;
+        database.ref(`users/${uid}/weatherReports`)
+            .limitToLast(1)
+            .once('value', (snapshot) => {
+                // get most recent report date
+                let reportDate = Object.keys(snapshot.val())[0];
+                snapshot.forEach((child) => {
+                    // get most recent report time
+                    let length = Object.keys(child.val()).length;
+                    // if 3rd report of the day
+                    if(length >= 3) {
+                        reportTime = Object.keys(child.val())[2];
+                    }
+                    // if 2nd report of the day
+                    else if (length == 2) {
+                        reportTime = Object.keys(child.val())[1];
+                    }
+                    // if 1st report of the day
+                    else {
+                        reportTime = Object.keys(child.val())[0];
 
-    hideAnalysisImage() {
-        this.setState({ showAnalysis: false })
+                    }
+                    })
+                    database.ref(`users/${uid}/weatherReports/${reportDate}/${reportTime}`).once('value', (childSnap) => {
+                        weatherSymbol = childSnap.val().weather;
+                        let mainWord = childSnap.val().mainword;
+                        let secondWord = childSnap.val().secondarywords[0];
+                        let thirdWord = childSnap.val().secondarywords[1];
+                        this.setState({ secondWord: secondWord })
+                        this.setState({ thirdWord: thirdWord })
+                        this.setState({ mainWord: mainWord })
+                        this.setState({ weather: weatherSymbol })
+                })
+            })
     }
 
     render() {
@@ -199,26 +258,34 @@ export class Report extends React.Component {
                 <button onClick={this.handleOpenModalReport.bind(this)} className="button--link menu-text">REPORT</button>
                 <ReactModal style={customStyles} className='modalMenu' isOpen={this.state.showReport} ariaHideApp={false}>
                     <div className="flex-center">
-                        <button className='menu-close' type="button" onClick={this.handleCloseModalReport.bind(this)}>
+                        <button className='menu-close-report' type="button" onClick={this.handleCloseModalReport.bind(this)}>
                             Back to Home
                         </button>
                     </div>
 
                     <h1>TODAY</h1>
-                    <h3>13th October</h3>
+                    <h3>{this.state.date}</h3>
                     <div className="flex-center">
-                        <img src={ReportPhoto} alt="image of weather"></img>
+                        {this.state.weather == 'bluesky' && <img src={bluesky} alt="image of blue sky"></img>}
+                        {this.state.weather == 'turquoise' && <img src={turquoiseRain} alt="image of threatening rain clouds"></img>}
+                        {this.state.weather == 'purple-rain' && <img src={purpleRain} alt="image of dark clouds"></img>}
+                        {this.state.weather == 'grey-cloud' && <img src={greyCloud} alt="image of grey clouds"></img>}
+                        {this.state.weather == 'light-clouds' && <img src={lightClouds} alt="image of light cloud"></img>}
+                        {this.state.weather == 'rainbow' && <img src={rainbow} alt="image of a rainbow"></img>}
+                        {this.state.weather == 'sunshine' && <img src={sunshine} alt="image of sunshine"></img>}
+                        {this.state.weather == 'tornado' && <img src={tornado} alt="image of a tornado"></img>}
+                        {this.state.weather == 'tsunami' && <img src={tsunami} alt="image of a tsunami"></img>}
                     </div>
-
-                    {this.state.showAnalysis ? 
-                        <div><img className='analysis-image' src={exampleImage} alt="analysis of mood"></img><div className='hide-analysis-button'>
-                        <button className='login-button' type="button" onClick={this.hideAnalysisImage.bind(this)}>HIDE</button>
-                    </div></div>:
-                        <div className="flex-center">
-                            <button className='login-button' type="button" onClick={this.showAnalysisImage.bind(this)}>SHOW PAST</button>
-                        </div>}
+                    <h1>{this.state.mainWord}</h1>
+                    <h3>{this.state.secondWord}</h3>
+                    <h3>{this.state.thirdWord}</h3>
+                    <br />
+                    <h3>We are still developing this part of the tool. It would be great to hear your ideas in the feedback</h3>
                 </ReactModal>
             </span>
         )
     }
 }
+
+
+

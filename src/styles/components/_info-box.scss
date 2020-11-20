@@ -1,14 +1,14 @@
 .background-box {
-    background-color: rgba(255,255,255, 0.6);
+    background-color: rgba(255,255,255, .6);
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 100%;
-    z-index: -6;
+    z-index: 0;
 }
 
 .opacity-box-full-height {
-    background-color: rgba(255,255,255, 0.6);
+    background-color: rgba(255,255,255, .6);
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -33,7 +33,7 @@
 .info-box-login {
     margin: 0 auto;
     position: absolute;
-    top: 40%;
+    top: 48%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -43,7 +43,6 @@
 }
 
 .info-box {
-    // border: 1px solid $green;
     margin: 0 auto;
     position: absolute;
     top: 43%;
@@ -53,7 +52,6 @@
     padding: 5%;
     width: 100%;
     max-width: 500px;
-    // height: calc(100% - 70px);
 }
 
 .modal-info-box {
@@ -183,6 +181,7 @@
     text-align: center;
     padding: 5%;
     font-size: 19px;
+    position: relative;
 }
 
 .free-form-submit {
@@ -232,8 +231,8 @@ textarea {
 
 .arrow {
     width: 100px;
-    margin-left: 25px;
-    margin-top: 35px;
+    margin-left: 15px;
+    margin-top: 39px;
 }
 
 .arrow-text {

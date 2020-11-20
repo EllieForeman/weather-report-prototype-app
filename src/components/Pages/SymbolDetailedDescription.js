@@ -10,7 +10,6 @@ require('firebase/auth');
 const firebase = require('firebase/app');
 const data = require('../../data/data.json');
 const fadeTime = 3000;
-let route;
 
 export default class SymbolDetailedDescription extends React.Component {
     constructor(props) {
@@ -27,9 +26,6 @@ export default class SymbolDetailedDescription extends React.Component {
     }
 
     componentDidMount() {
-        // get the route as soon as possible - prevents defaulting to landing when onboarding
-        route = GetKeyByValue(data[10].categories,this.state.mainWord);
-        console.log('route', route);
         // check if user is still onboarding - user will have 0 entries at this point if so
         const uid = firebase.auth().currentUser.uid;
         // check if a weatherReport entry exists
@@ -59,9 +55,8 @@ export default class SymbolDetailedDescription extends React.Component {
         const uid = user.uid;
         let date = this.state.day.format("YYYY-MM-DD")
         let time = moment().format("kk-mm")
-        // work out path to route user based on main word
-        // moved this into componentDidMount 
-        //let route = GetKeyByValue(data[10].categories,this.state.mainWord);
+        // work out path to route user based on main word 
+        let route = GetKeyByValue(data[10].categories,this.state.mainWord);
         database.ref(`users/${uid}/weatherReports/${date}/${time}`).update({
             weather: this.state.weatherSymbol,
             mainword: this.state.mainWord,
@@ -148,7 +143,7 @@ export default class SymbolDetailedDescription extends React.Component {
                                     {data[10].secondaryWords.map((word) => (
                                         <div className='words' key={word}>
                                             <button
-                                                className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border' : 'symbol-button-border'}
+                                                className={this.state.secondaryWords.includes(word) ? 'active-symbol-button-border-detailed' : 'symbol-button-border-detailed'}
                                                 onClick={(e) => { this.addWords({ word }) }}>
                                                 {word.toUpperCase()}
                                             </button>

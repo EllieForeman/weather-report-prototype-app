@@ -86,7 +86,7 @@ export class ReasonForFeelingsInputAndReminder extends React.Component {
                     <div>
                         <h1 className='info-box-title'>{data[3].shared.reason}</h1>
                         <form className='button-container-vertical' onSubmit={this.handleNoteSubmit.bind(this)}>
-                            <textarea className='free-form-input input-paragraph' type="text" value={this.state.value} onChange={this.handleNoteChange} />
+                            <textarea className='free-form-input input-paragraph' placeholder="What was it that made you feel like this?" type="text" value={this.state.value} onChange={this.handleNoteChange} />
                             <button className='next-button-dark free-form-submit center' onClick={this.props.buttonClick}>NEXT</button>
                         </form>
                     </div>

@@ -18,7 +18,7 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        const rand = Math.random() * (30000 - 15000) + 15000
+        const rand = Math.random() * (30000 - 15000) + 15000 // random between 15 and 30 seconds for fish appearing
         let intervalId = setInterval(() => {
             this.setState(prevState => {
                 if (prevState.Fish === true) {
@@ -77,7 +77,7 @@ class HomePage extends React.Component {
                 <AnchorsModal />
                 <PebblesModal />
                 {(this.state.Fish) ? 
-                <div className='anim-2'><Animation animation='fishSwimming'/></div>
+                <div className='anim-0'><Animation animation='fishSwimming'/></div>
                 : ''}                
                 <FishModal fishAppears={this.state.showButton} />
             </div>

@@ -1,12 +1,9 @@
 import React from 'react';
-const data = require('../../data/data.json');
 const firebase = require('firebase/app');
 import database from '../../firebase/firebase';
 import moment from 'moment';
-import { history } from '../../routers/AppRouter';
-import { AnimationsLayered } from '../SharedComponents/SharedComponents';
 import { CSSTransition } from "react-transition-group";
-
+let goTo = '';
 
 export class IntroPage extends React.Component {
     constructor(props) {
@@ -17,45 +14,69 @@ export class IntroPage extends React.Component {
     }
 
     componentDidMount = () => {
-        setTimeout(() => { this.setState({ showIntro: false })}, 2000)
+        this.choosePath()
+        setTimeout(() => { this.setState({ showIntro: false }) }, 2000)
+        setTimeout(() => {this.ReRoute(goTo)}, 4000)
     };
 
-    reRoute() {
+    choosePath() {
         const date = moment().format("YYYY-MM-DD");
-        const uid = firebase.auth().currentUser.uid;        // check if they have entered WR more 
+        const uid = firebase.auth().currentUser.uid; 
         let entries = database.ref(`users/${uid}/weatherReports/${date}`);
-        entries.on('value', function(snapshot) {
+        // THIS BIT was .on instead of .once -> it was being called again when the snapshot updated!
+        // check if they have entered a report more than 3 times in a day
+        entries.once('value', function (snapshot) {
             const numberOfEntries = snapshot.numChildren()
             if (numberOfEntries >= 3) {
-                history.push('/3-home');
+                goTo = '3-home';
+                console.log(goTo);
             }
             else {
-                database.ref(`users/${uid}/weatherReports`).once("value", snapshot => {
-                    // if user exists show 'no
-                    if (snapshot.exists()){
-                        history.push('/landing');
+                database.ref(`users/${uid}/weatherReports`).once('value').then(snapshot => {
+                    if (snapshot.exists()) {
+                        goTo = 'landing';
+                        console.log(goTo);
                     }
                     else {
                         // if no weatherReports have been entered, user is taken down onboarding path
-                        history.push('/onboarding');
+                        goTo = 'onboarding';
+                        console.log(goTo);
+
                     }
                 })
             }
         });
-        
-
+    
     }
 
+    ReRoute(route) {
+        switch (route) {
+            case "3-home":
+               this.props.history.push({
+                   pathname: '/3-home'
+               })
+               break;
+           case "landing":
+               this.props.history.push({
+                   pathname: '/landing'
+               })
+               break;
+           case "onboarding":
+               this.props.history.push({
+                   pathname: '/onboarding'
+               })
+               break;
+    }
+}
     render() {
         return (
             <div className='container'>
-                    <CSSTransition in={this.state.showIntro} timeout={2000} classNames="fade" appear unmountOnExit onExited={() => this.reRoute()}>
-                        <div className="center-vertical">
-                            <h1>Weather Report</h1>
-                        </div>
-                    </CSSTransition>
+                <CSSTransition in={this.state.showIntro} timeout={2000} classNames="fade" appear unmountOnExit>
+                    <div className="center-vertical">
+                        <h1>Weather Report</h1>
+                    </div>
+                </CSSTransition>
             </div>
-        
         )
     }
 }

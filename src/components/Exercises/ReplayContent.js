@@ -5,8 +5,6 @@ import database from '../../firebase/firebase';
 const data = require('../../data/data.json');
 let listOfContent = [];
 
-// looks through last 30 entries for green and orange emotions that have non empty notes attached -> returns the note
-
 export default class ReplayContent extends React.Component {
 
     constructor(props) {
