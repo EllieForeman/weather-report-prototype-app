@@ -3,7 +3,7 @@
   "homepage": "http://myweatherreport.org",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "rachel",
+  "author": "Rachel Smith and Ellie Foreman",
   "license": "MIT",
   "engines": {
     "node": "<=13.x"
